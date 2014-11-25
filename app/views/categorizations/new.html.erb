@@ -1,0 +1,14 @@
+
+
+<% if @categorization.errors.present? %>
+<% @categorization.errors.full_messages.each do |message| %>
+  <%= message %>
+  <% end %>
+<% end %>
+
+<%= form_for [@kitten, @categorization] do |f| %>
+
+<%= f.label :category %>
+<%= f.collection_select(:category_id, Category.all, :id, :name, {include_blank: "Please select adorability..."}, {class: "form-control"}) %>
+<%= f.submit "Add Category" %>
+<% end %>
